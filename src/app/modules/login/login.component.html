@@ -1,0 +1,35 @@
+<article>
+    <mat-card appearance="outlined" *ngIf="loginForm" class="form">
+        <mat-card-header class="form_title">
+            <mat-card-title>Inicio de Sesión</mat-card-title>
+        </mat-card-header>
+        <mat-card-content class="form_content">
+            <form [formGroup]="loginForm">
+                <mat-form-field>
+                    <mat-label>Correo</mat-label>
+                    <input type="email" matInput formControlName="email"
+           placeholder="vmadio@alicunde.com">
+           @if (loginForm.get('email')?.hasError('email') && !loginForm.get('email')?.hasError('required')) {
+            <mat-error>Por favor coloca un correo válido</mat-error>
+           }
+           @if (loginForm.get('email')?.hasError('required')) {
+            <mat-error>Correo es <strong>requerido</strong></mat-error>
+          }
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-label>Contraseña</mat-label>
+                    <input type="password" matInput formControlName="password">
+                @if (loginForm.get('password')?.hasError('minlength') && !loginForm.get('password')?.hasError('required')) {
+                    <mat-error>La contraseña debe tener una longitud mínima de 10 caracteres</mat-error>
+                }
+                @if (loginForm.get('password')?.hasError('required')) {
+                    <mat-error>Contraseña es <strong>requerido</strong></mat-error>
+                  }
+                </mat-form-field>
+            </form>
+        </mat-card-content>
+        <mat-card-actions class="form_actions">
+            <button mat-flat-button [disabled]="loginForm.invalid" (click)="goToGif()">Entrar</button>
+        </mat-card-actions>
+    </mat-card>
+</article>
