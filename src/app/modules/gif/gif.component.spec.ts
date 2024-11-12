@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { GifComponent } from './gif.component';
+import { NO_ERRORS_SCHEMA } from '@angular/core';
 
 describe('GifComponent', () => {
   let component: GifComponent;
@@ -8,7 +9,8 @@ describe('GifComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [GifComponent]
+      declarations: [GifComponent],
+      schemas: [NO_ERRORS_SCHEMA]
     })
     .compileComponents();
 
